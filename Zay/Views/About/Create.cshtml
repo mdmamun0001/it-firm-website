@@ -1,0 +1,109 @@
+﻿@model AboutCreateViewModel
+@{
+    ViewData["Title"] = "Add About";
+}
+
+<h1 class="text-align-center">@ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
+<form method="post" enctype="multipart/form-data" asp-controller="About" asp-action="Create" >
+    <div class="form-group">
+        <label asp-for="CompanyName">Company Name </label>
+        <input class="form-control" asp-for="CompanyName" />
+        <span asp-validation-for="CompanyName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription">Short Description</label>
+        <textarea class="form-control" asp-for="ShortDescription"> </textarea>
+        <span asp-validation-for="ShortDescription"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="Description"> </textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vission"></label>
+        <textarea class="form-control" asp-for="Vission"> </textarea>
+        <span asp-validation-for="Vission"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mission"></label>
+        <textarea class="form-control" asp-for="Mission"> </textarea>
+        <span asp-validation-for="Mission"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Strength"></label>
+        <textarea class="form-control" asp-for="Strength"> </textarea>
+        <span asp-validation-for="Strength"></span>
+    </div>
+   
+    <div class="form-group">
+
+        <label asp-for="PhoneNnmber">Phone</label>
+        <input type="number" class="form-control" asp-for="PhoneNnmber" />
+        <span asp-validation-for="PhoneNnmber"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="PhoneNumber2">Additional Phone </label>
+        <input type="number" class="form-control" asp-for="PhoneNumber2" />
+        <span asp-validation-for="PhoneNumber2"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Email"></label>
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Email2">Additional Email</label>
+        <input class="form-control" asp-for="Email2" />
+        <span asp-validation-for="Email2"></span>
+
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Address"></label>
+        <input class="form-control" asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+
+    </div>
+    <div class="form-group">
+
+        <label asp-for="AddressLink">Address Link </label>
+        <input class="form-control" asp-for="AddressLink" />
+        <span asp-validation-for="AddressLink"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="OfficeTime">Office Time</label>
+        <input class="form-control" asp-for="OfficeTime" />
+        <span asp-validation-for="OfficeTime"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="OffDay">Off Day</label>
+        <input class="form-control" asp-for="OffDay" />
+        <span asp-validation-for="OffDay"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Logo"></label>
+        <input class="form-control" asp-for="Logo" />
+        <span asp-validation-for="Logo"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Image">Cover Image</label>
+        <input class="form-control" asp-for="Image"  />
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button class="btn btn-info float-right" type="submit">Create</button>
+</form>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

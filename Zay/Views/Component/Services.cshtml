@@ -1,0 +1,32 @@
+﻿@{
+    if(ViewBag.ServiceCategory != null){
+    <section style="margin-top:100px;">
+                                                        <div class="container">
+                                                            <h2 class="text-center title" style="margin:50px;"> We Offer Services</h2>
+                                                            <div class="row">
+                                                                @foreach (var item in ViewBag.ServiceCategory.Services)
+                       {
+                                                                    <div class="col-lg-4  col-6 service-card-wrap" style="margin-top:20px;">
+                                                                      <div class="d-flex service-card" style=" ">
+
+                                                                       <img class="rounded-4" style="height:250px; width:100%; border-top-right-radius: 8px;border-top-left-radius:8px;" src="~/img/Service/@item.Image" />
+                                                                           <div class="service-card-content" >
+                                                                           
+                                                                            <h4 class="sub-title">@item.Name</h4>
+                                                                            <p>@item.Description</p>
+                                                                             <button style="width:100%" class="btn common-button"> Get Appoinment</button>
+                                                                           </div>
+                                                                        </div>
+                                                                    </div>
+
+                        }
+                                                            </div>
+                                                            <div class="row">
+                                        <div class="col-12 text-center section-margin" style="">
+                                                                 <img class="img-fluid" src="~/img/how-we-work.png.png" />
+                                                               </div>
+                                                            </div>
+                                                        </div>
+    </section>
+    }
+}

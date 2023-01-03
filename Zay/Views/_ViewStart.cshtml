@@ -1,0 +1,16 @@
+﻿
+@{
+    String path = Context.Request.Path;
+    if (path.ToUpper().Contains("LOGIN"))
+    {
+        Layout = "_AdminLoginLayout";
+        return;
+    }
+    if (path.ToUpper().Contains("ADMIN"))
+    {
+        Layout = "_AdminLayout";
+        return;
+    }
+    Layout = "_layout";
+
+}

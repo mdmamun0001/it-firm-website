@@ -1,0 +1,49 @@
+﻿@model SliderEditViewModel
+@{
+    ViewData["Title"] = "Update Slider";
+}
+
+<h1 class="text-align-center"> @ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
+<form method="post" enctype="multipart/form-data" asp-controller="Slider" asp-action="Edit">
+    <input hidden asp-for="@Model.Id" />
+    <input hidden asp-for="@Model.ExistingImage" />
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="@Model.Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea class="form-control" asp-for="@Model.Content"> </textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsActive">Status</label>
+        <select class="form-control" asp-for="@Model.IsActive">
+            <option value="">Select Status</option>
+            <option value="true">Active</option>
+            <option value="false">InActive</option>
+            <span asp-validation-for="IsActive"></span>
+        </select>
+   </div>
+    <div class="form-group">
+
+        <label asp-for="DisplayOrder"></label>
+        <input class="form-control" asp-for="@Model.DisplayOrder" />
+        <span asp-validation-for="DisplayOrder"></span> 
+   </div>
+    <div class="form-group">
+
+        <label asp-for="Image"></label>
+        <input class="form-control" asp-for="@Model.Image" />
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button class="btn btn-info float-right" type="submit">Update</button>
+</form>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Services";
+}
+@{
+    if (ViewBag.ServiceCategory != null)
+    {
+        <section class="ServiceCategory " style="margin-top:100px;">
+            <div class="container">
+                <div class="row">
+                    <div class="d-flex" style="flex-direction:column; row-gap:40px;">
+                        <h2 class="text-center title">@ViewBag.ServiceCategory.Name</h2>
+                        <p class="text-center sub-title">@ViewBag.ServiceCategory.Description</p>
+                        <img class="img-fluid rounded" src="~/img/Service/@ViewBag.ServiceCategory.Images" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <partial name="/Views/Component/Services.cshtml"></partial>
+        <partial name="/Views/Component/FindSolution.cshtml"></partial>
+    }
+}

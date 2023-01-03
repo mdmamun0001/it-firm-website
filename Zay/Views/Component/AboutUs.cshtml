@@ -1,0 +1,88 @@
+﻿@{
+    if (ViewBag.CompanyInfo.Count!= null && ViewBag.CompanyInfo.Count > 0)
+    {
+    <section style="margin-top:100px;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="d-flex" style="flex-direction:column; row-gap:40px; margin-top:40px;">
+                                                <h2 class="title">@ViewBag.CompanyInfo[0].CompanyName</h2>
+                                                <p>@ViewBag.CompanyInfo[0].ShortDescription</p>
+                                                <img class="rounded" src="~/img/Gallary/@ViewBag.CompanyInfo[0].Image" />
+                                                <p>@ViewBag.CompanyInfo[0].Description</p>
+                                            </div>
+                                            <div class="col-md-6 d-flex paddingTBRL50 rounded" style="margin-top:20px; margin-bottom:10px; justify-content:space-between; flex-wrap:wrap; background-color:#ff66001f;">
+                                                <div>
+                                                    <h5 class="sub-title">Address</h5>
+                                                    <p><i class="fa-solid fa-location-dot"></i> @ViewBag.CompanyInfo[0].Address</p>
+                                                </div>
+                                                <div>
+                                                    <h5 clclass="sub-title">Office Time</h5>
+                                                    <p><i class="fa-solid fa-business-time"></i> @ViewBag.CompanyInfo[0].OfficeTime</p>
+                                                </div>
+                                                <div>
+                                                    <h5 class="sub-title">Off Day</h5>
+                                                    <p><i class="fa-solid fa-clock"></i> @ViewBag.CompanyInfo[0].OffDay </p>
+                                                </div>
+                                                <div>
+                                                    <h5 class="sub-title">Contact</h5>
+                                                    <div class="d-flex" style="column-gap:20px">
+                                                        <div>
+                                                            <p style="font-size:18px"><i class="fa-solid fa-phone"></i> <a href="tel:@ViewBag.CompanyInfo[0].PhoneNnmber">@ViewBag.CompanyInfo[0].PhoneNnmber</a></p>
+
+                                                            @{
+                                        if (@ViewBag.CompanyInfo[0].PhoneNumber2 != null)
+                                        {
+                                                                                            <p><i class="fa-solid fa-phone"></i> <a href="tel:@ViewBag.CompanyInfo[0].PhoneNumber2">@ViewBag.CompanyInfo[0].PhoneNumber2</a></p>
+                                        }
+                                                            }
+                                                        </div>
+                                                        <div>
+                                                            <p style="font-size:18px;"> <i class="fa-solid fa-envelope"></i> <a href="mailto:@ViewBag.CompanyInfo[0].Email">@ViewBag.CompanyInfo[0].Email</a></p>
+                                                            @{
+                                        if (@ViewBag.CompanyInfo[0].Email2 != null)
+                                        {
+                                                                                            <p style="font-size:18px;"><i class="fa-solid fa-envelope"></i> <a href="mailto:@ViewBag.CompanyInfo[0].Email2">@ViewBag.CompanyInfo[0].Email2</a></p>
+
+                                        }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           <div class="col-md-6" style="margin-top:20px; padding-bottom:5px;">
+                                            <iframe src="@ViewBag.CompanyInfo[0].AddressLink"  height="500" style="border:0; width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                               
+                                            </div>
+                                         
+
+                                        </div>
+                                        <div class="row ">
+                                                @{
+                                if(ViewBag.PhotoGallary.Count > 0)
+                                {
+                                                                          <div class="photo-grid" style="margin-top:50px;">
+                                                                            
+                                                                             @foreach(var item in ViewBag.PhotoGallary)
+                                     {
+                                         Random rnd = new Random();
+                                         int rndnumber = rnd.Next(5);
+                                         string ClassName = "card-wide";
+                                                                                 @if(rndnumber > 3)
+                                         {
+                                           ClassName = "";
+                                         }
+                                                                                <div class="gallary-card @ClassName" title="@item.Title" style= "background-image: url(/img/Gallary/@item.Image);">
+                                                                               
+                                                                                </div>
+                                         
+                                     }
+
+                                                                          </div>
+                                }
+                                                }
+                                        </div>
+                                    </div>
+
+    </section>
+    }
+}

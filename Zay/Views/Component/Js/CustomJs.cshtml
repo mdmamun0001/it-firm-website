@@ -1,0 +1,114 @@
+﻿<script>
+    $(document).ready(function () {
+      
+        $(window).scroll(function (event) {
+            var scroll = $(window).scrollTop();
+            if (scroll > 60) {
+
+                $(".nav-logo-img").css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19)");
+                $(".sticky").css("box-shadow", "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+            } else {
+
+                $(".nav-logo-img").css("box-shadow", "0");
+                $(".sticky").css("box-shadow", "0");
+            }
+        });
+        $('.navbar-toggler').click(function ()
+         {
+           let is_expended = $('.navbar-toggler').attr("aria-expanded");
+            if (is_expended == "true") 
+            {
+             
+                $('.nav-logo-img').css("position", "revert");
+                console.log( );
+           }
+            else {
+                $('.nav-logo-img').css("position", "absolute");
+                console.log();
+            }
+         }
+        );
+        $('.carousel').carousel({
+            interval: 4000,
+            touch: true,
+            ride: true
+        });
+        $('#Customer-review-slick-slider').slick({
+            dots: true,
+            autoplay: true,
+            infinite: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            adaptiveHeight: true ,
+
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+        $('#client-brands-slick').slick({
+            adaptiveHeight: true,
+            centerMode: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 650,
+                    settings: {
+                        infinite: true,
+                        dots: false,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+
+        $('#pills-tab1').click(function () {
+            $('#pills-tab1-next-icon').removeClass("d-none").addClass("d-block");
+            $('#pills-tab2-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab3-next-icon').removeClass("d-block").addClass("d-none");
+        });
+
+        $('#pills-tab2').click(function () {
+            $('#pills-tab1-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab2-next-icon').removeClass("d-none").addClass("d-block");
+            $('#pills-tab3-next-icon').removeClass("d-block").addClass("d-none");
+        });
+       
+        $('#pills-tab3').click(function () {
+            $('#pills-tab1-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab2-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab3-next-icon').removeClass("d-none").addClass("d-block");
+        });
+        $('#pills-tab4').click(function () {
+            $('#pills-tab1-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab2-next-icon').removeClass("d-block").addClass("d-none");
+            $('#pills-tab3-next-icon').removeClass("d-block").addClass("d-none");
+        });
+        $('#pills-next-tab-1').click(function () {
+            $('#pills-tab2').click();
+        });
+        $('#pills-next-tab-2').click(function () {
+            $('#pills-tab3').click();
+        });
+        $('#pills-next-tab-3').click(function () {
+            $('#pills-tab4').click();
+        });
+    });
+    
+</script>

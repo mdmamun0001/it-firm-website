@@ -1,0 +1,35 @@
+﻿@{
+    if (ViewBag.Employes != null && ViewBag.Employes.Count > 0)
+    {
+    <section class="section-margin paddingTB100 " style="background-color:#ff66000d;">
+                <div class="container" id="our-employes">
+                    <div class="row">
+                        <h2 class="text-center title" style="margin-bottom:60px;">Meet Our Experts</h2>
+                        @{
+                        foreach (var item in ViewBag.Employes)
+                        {
+                                    <div class="col-md-4 " style="padding:20px;">
+                                        <div class="text-center">
+                                            <img style="height:180px; width:180px; border-radius:50%;" src="~/img/Employe/@item.Image">
+                                        </div>
+                                        <div class="d-flex "  style="flex-direction:column; align-items:center; margin-top:25px;">
+                                            <h4 class="sub-title">@item.Name</h4>
+                                            <h6 class="sub-sub-title">@item.JobTitle</h6>
+                                            <p>@item.Responsibility</p>
+                                        </div>
+                                    
+                                    </div>
+                        }
+                        }
+                    </div>
+                   <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-10 col-11  rounded get-appoinment-section" style="">
+
+                        <h4 class="sub-title" style="text-align:center;">Grow your bright future with us !</h4>
+                        <a class="btn common-button" asp-controller="Home" asp-action="JobApplication">Now Apply</a>
+                    </div>
+                   </div>
+                </div>
+    </section>
+    }
+}

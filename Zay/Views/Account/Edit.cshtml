@@ -1,0 +1,59 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "Edit user";
+}
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Change an Account Information!</h1>
+                        </div>
+                        @{
+                            if (TempData["FlashMessage"] != null)
+                            {
+                                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                            }
+                        }
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <form class="user" method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="Edit">
+                            <input asp-for="@Model.Id" hidden >
+                            <div class="form-group ">
+                                <label asp-for="Name"></label>
+                                <input type="text" class="form-control form-control-user" asp-for="@Model.Name"  id="exampleFirstName"
+                                           >
+
+                                <span asp-validation-for="Name"></span>
+                               
+                            </div>
+                            <div class="form-group ">
+                                    <label asp-for="NewPassword"></label>
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleInputPassword" asp-for="NewPassword" >
+                                    <span asp-validation-for="NewPassword"></span>
+                              
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Save 
+                            </button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

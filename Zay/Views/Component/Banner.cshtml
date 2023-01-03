@@ -1,0 +1,58 @@
+﻿@{
+    if (ViewBag.Sliders != null && ViewBag.Sliders.Count > 0)
+    {
+    <section class="banner-section">
+                                                <div class="container ">
+                                                    <div class="row " >
+                                                        <div class="col-md-6" style="margin-top:20px;">
+                                                            <div class=" banner-whole-content-wrap" >
+                                                                <div id="carouselExampleFadeBanner" style="min-height:100px" class="carousel slide carousel-fade" data-ride="carousel">
+                                                                    <div class="carousel-inner">
+                                                                        @{
+                                                                int count = 0;
+                                                                                        @foreach (var slider in ViewBag.Sliders)
+                                                                {
+                                                                    count += 1;
+                                                                                            <div class="carousel-item text-center @(count == 1 ? "active":"") " style="">
+                                                                                                <h2 class="banner-title">
+                                                                                                    @slider.Content
+                                                                                                </h2>
+                                                                                            </div>
+                                                                }
+                                                                        }
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="">
+                                                                    <div class="">
+                                                                        <a href="#projects-show" class="btn common-button text-center">
+                                                                            See Our Work
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6" style="height:350px; margin-top:20px;">
+                                                            <div>
+                                                            @{
+                                                    if(ViewBag.Sliders != null && ViewBag.Sliders.Count > 0 ){
+                                                        
+                                                                                  <img class="img-fluid" style="height:350px" src="~/img/Slider/@ViewBag.Sliders[0].Image" />
+                                                    }
+                                                            }
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                      <div class="col-lg-9  col-11  rounded get-appoinment-section" style="">
+                                                        <h4 class="sub-title" style="text-align:center;">Our experts are ready to take challange for you !</h4>
+                                                        <a class="btn common-button" asp-controller="Home" asp-action="Appoinment" >Get Appoinment</a>
+                                                      </div>
+                                                    </div>
+                                                </div>
+    </section>
+    }
+    
+}
