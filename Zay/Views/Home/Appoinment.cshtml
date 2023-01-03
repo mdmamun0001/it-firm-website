@@ -1,0 +1,76 @@
+﻿@model AppoinmentRequestCreateViewModel
+@{
+    ViewData["Title"] = "Appoinment";
+}
+<section class="section-margin">
+<div class="container">
+        <div class="row justify-content-center">
+            @{
+                if (TempData["FlashMessage"] != null)
+                {
+                    <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                }
+            }
+            <div class="col-8 d-flex rounded" style="justify-content:space-between; margin-top:80px; padding:20px; background-color:#ff660047;">
+                <h4 class="sub-title text-center">  We are ready to take challange for you. <span class="  thanks-text">Thanks for visiting!</span></h4>
+            </div>
+            <div class="col-10">
+                
+                <h2 class="text-center title" style="margin-top:40px;">Get your Appoinment </h2>
+                <form class="Appoinment-form" method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="AppoinmentRequest">
+                    <div class="form-group ">
+                        <label></label>
+                        <input placeholder="Name*" asp-for="Name" required class="form-control contact-input" /> 
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input placeholder="Email*" asp-for="Email"  class="form-control contact-input" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input placeholder="Contact Number" asp-for="PhoneNumber" type="Number" class="form-control contact-input" />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:10px;">Selet Service Type <span style="color:red">*</span></label>
+                        <select required class="form-control contact-input" asp-for="ServiceType">
+                             <option value="">Select one</option>
+                            @{
+                                foreach (var item in ViewBag.ServiceCategories)
+                                {
+                                            <option value="@item.Name">@item.Name</option>
+                                }
+                            }
+                            <option value="Others">Others</option>
+                        </select>
+                        <span asp-validation-for="ServiceType"></span>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:10px;">Your Flexible Time <span style="color:red">*</span></label>
+                        <input placeholder="Your Flexible Time*" asp-for="CustomerFlexibleDateTime" required  class="form-control contact-input" />
+                        <span asp-validation-for="CustomerFlexibleDateTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <textarea placeholder="Write your message" asp-for="Message" rows="10" required class="form-control"> </textarea>
+                        <span asp-validation-for="Message"></span>
+                       
+                    </div>
+                    <button class="btn  common-button" style="margin-top:20px; float:right" type="submit">Send Appoinment Resquest</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<partial name="~/Views/Component/Client.cshtml"></partial>
+<partial name="~/Views/Component/CustomerReview.cshtml"></partial>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

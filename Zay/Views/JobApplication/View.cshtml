@@ -1,0 +1,26 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-md-10">
+
+        @{
+            ViewData["Title"] = "Application for Job";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        <div class="d-flex rounded" style=" color:white; flex-direction:column; row-gap:20px; background-color:darkblue; padding:40px;">
+            <h5>Job Title : @ViewBag.JobApplication.JobTitle</h5>
+            <h5>Name : @ViewBag.JobApplication.Name</h5>
+            <h5>Email : @ViewBag.JobApplication.Email</h5>
+            <h5>Phone : @ViewBag.JobApplication.PhoneNumber</h5>
+            <p>Message: <span style="color:white; padding:5px 10px; border-radius:4px;">@ViewBag.JobApplication.Message</span></p>
+            <p style="text-align:end;"><span style="color:black; padding:2px 5px;border-radius:4px 0px; background-color:#ecdace;">Was Sent At :@ViewBag.JobApplication.CreatedDateTime.ToString("ddd dd MMM yyy HH:mm:ss")</span></p>
+            <a class="btn btn-info" target="_blank" href="/Storage/Cv/@ViewBag.JobApplication.Cv">View CV</a>
+            @if(ViewBag.JobApplication.CoverLetter != null) {
+
+                <a class="btn btn-info " target="_blank" href="/Storage/Coverletter/@ViewBag.JobApplication.CoverLetter">View CoverLetter</a>
+            }
+         </div>
+
+
+        <a class="float-right  btn btn-info" style="margin-top:20px;" asp-controller="JobApplication" asp-action="Index"> All Job Applications</a>
+    </div>
+</div>

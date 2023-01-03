@@ -1,0 +1,68 @@
+﻿@{
+    if (ViewBag.Projects != null && ViewBag.Projects.Count > 0)
+    {
+        <div id="projects-show" class="Project container section-margin section-margin-bootom100">
+
+                                    <div class="row ">
+                                        <div  class="text-center" style="margin-bottom:50px">
+                                            <h2 class="title">
+                                                Project we did and problem we solved
+                                            </h2>
+                                        </div>
+                                        @{
+                    foreach (var item in ViewBag.Projects)
+                    {
+                                                                        <div class="row justify-content-center" style="margin:25px 0px;  ">
+                                            <div class="col-md-11 project-wrap rounded" style="background-color:#f2f6fa; border-color:@item.BackgroundColor; over-flow:hidden ">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6 d-block d-md-none project-image-main" style="background-color:@item.BackgroundColor" >
+                                                                                        <div style="height:350px; padding:8px;" >
+                                                                                        
+                                                                                            <a asp-controller="Home" asp-action="Project" asp-route-id="@item.ProjectId"><img style="width:100%; height: -webkit-fill-available;" src="~/img/Project/@item.Image" /></a></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <a asp-controller="Home"   asp-action="Project" asp-route-id="@item.ProjectId">
+                                                                                            <div class="d-flex" style="flex-direction:column; row-gap:40px; justify-content:center; height:350px">
+                                                                                                <h3 class="sub-title">
+                                                                                                  Name: @item.Name
+
+                                                                                                </h3>
+                                                                                                <h5 class="sub-sub-title">
+                                                                                                   Client: @item.ClientName
+                                                                                                </h5>
+                                                                                                <div class="d-flex" style="column-gap:40px; flex-wrap: wrap; ">
+                                                                                                  Tools:  @foreach (var tool in item.Tools)
+                                                                                  {
+                                                                                                        <img style="width:50px; height:50px;" src="~/img/Tool/@tool.Image" />
+                                                                                    }
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 d-none d-md-block project-image-main" style="background-color:@item.BackgroundColor" >
+                                                                                        <div style="height:350px; padding:8px;" >
+                                                                                            <a  asp-controller="Home" asp-action="Project" asp-route-id="@item.ProjectId"><img style="width:100%; height: -webkit-fill-available;" src="~/img/Project/@item.Image" /></a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                    }
+                                        }
+                                        @{
+                        
+                                  String path = Context.Request.Path;
+                                  if (! path.ToUpper().Contains("PROTFOLIO"))
+                                  {
+                                                                <div class="text-center next-link" style="margin:20px 0px">
+
+                                                                    <a  asp-controller="Home" asp-action="Protfolio">View All <img src="~/img/next-icon.svg" /></a>
+                                                                </div>
+                                  }
+                                        }
+                                        
+                                    </div>
+    </div>
+
+    }
+}

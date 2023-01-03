@@ -1,0 +1,121 @@
+﻿@model ProjectEditViewModel
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<h1 class="text-align-center">@ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
+<form method="post" enctype="multipart/form-data" asp-controller="Project" asp-action="Edit">
+    <input hidden asp-for="@Model.ProjectId" />
+    <input hidden asp-for="@Model.ExistingImage" />
+    <select multiple hidden asp-for="@Model.ExistingToolIds" > 
+       @{ 
+            if (@Model.ExistingToolIds!= null)
+            {
+                foreach (var item in @Model.ExistingToolIds)
+                {
+                    <option value="@item"></option>
+                }
+           }
+       }       
+    </select> 
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BackgroundColor"> Background Color In Hex</label>
+        <input class="form-control" asp-for="@Model.BackgroundColor" />
+        <span asp-validation-for="BackgroundColor"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProjectUrl"></label>
+        <input class="form-control" asp-for="@Model.ProjectUrl" />
+        <span asp-validation-for="ProjectUrl"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientName"></label>
+        <input class="form-control" asp-for="@Model.ClientName" />
+        <span asp-validation-for="ClientName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientUrl"></label>
+        <input class="form-control" asp-for="@Model.ClientUrl" />
+        <span asp-validation-for="ClientUrl"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryName"></label>
+        <input class="form-control" asp-for="@Model.CategoryName" />
+        <span asp-validation-for="CategoryName"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="@Model.Description"> </textarea>
+        <span asp-validation-for="Description"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Status">Work Status</label>
+        <input class="form-control" asp-for="@Model.Status" />
+        <span asp-validation-for="Status"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsActive">Shown or Not Shown</label>
+        <select class="form-control" asp-for="@Model.IsActive">
+            <option value="">Select Status</option>
+            <option value="true">Active</option>
+            <option value="false">InActive</option>
+            <span asp-validation-for="IsActive"></span>
+        </select>
+   </div>
+    <div class="form-group">
+
+        <label asp-for="DisplayOrder"></label>
+        <input class="form-control" asp-for="@Model.DisplayOrder" />
+        <span asp-validation-for="DisplayOrder"></span> 
+   </div>
+    <div class="form-group">
+
+        <label asp-for="PublishedDate"></label>
+        <input class="form-control" asp-for="@Model.PublishedDate" />
+        <span asp-validation-for="PublishedDate"></span>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="NewToolIds">Tools</label>
+        <select multiple class="form-control js-example-basic-multiple" asp-for="@Model.NewToolIds">
+           @{
+                if (ViewData["tools"] != null)
+                {
+                    foreach (Tool item in ViewData["tools"] as List<Tool>)
+                    {
+                            <option value="@item.ToolId">@item.Name</option>
+                    }
+               }
+            }
+         
+            <span asp-validation-for="NewToolIds"></span>
+       </select>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Image"></label>
+        <input class="form-control" asp-for="@Model.Image"  />
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button class="btn btn-info float-right" type="submit">Update</button>
+</form>
+  @section scripts{
+        @{
+        <script src="~/js/select2.min.js"></script>
+                <partial name="_ValidationScriptsPartial"></partial>
+                <script>
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2();
+                });
+                </script>
+        }
+    }

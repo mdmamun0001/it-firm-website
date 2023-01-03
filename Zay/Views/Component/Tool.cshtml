@@ -1,0 +1,69 @@
+﻿@{
+    if (ViewBag.Tools!= null && ViewBag.Tools.Count >= 10 )
+    {
+        <div class="marginTB50 paddingTB100" style="background-color:#FFF9EC">
+            <div class=" container tools  ">
+               
+                    <div class="text-center">
+                        <h2 class="title" style="margin:50px 0px;"> Our Experts Work With </h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="tool-row-flex-setngs scnd-row">
+                            <div class="tools-bubble1 bubble  ">
+                                <img class="tool-bubble-img-1" src="~/img/Tool/@ViewBag.Tools[1].Image" />
+                                <p class="d-none">@ViewBag.Tools[1].Name</p>
+                            </div>
+                            <div class="tools-bubble2 bubble">
+                                <img class="tool-bubble-img-2" src="~/img/Tool/@ViewBag.Tools[2].Image" />
+                                <p class="d-none">@ViewBag.Tools[2].Name</p>
+                            </div>
+                        </div>
+                        <div class="tool-row-flex-setngs thrd-row">
+                            <div class="tools-bubble3 bubble">
+                                <img class="tool-bubble-img-3" src="~/img/Tool/@ViewBag.Tools[3].Image" />
+                                <p class="d-none">@ViewBag.Tools[3].Name</p>
+                            </div>
+                            <div class="tools-bubble2 bubble">
+                                <img class="tool-bubble-img-2" src="~/img/Tool/@ViewBag.Tools[4].Image" />
+                                <p class="d-none">@ViewBag.Tools[4].Name</p>
+                            </div>
+                            <div class="tools-bubble1 bubble">
+
+                                <img class="tool-bubble-img-1" src="~/img/Tool/@ViewBag.Tools[5].Image" />
+                                <p class="d-none">@ViewBag.Tools[5].Name</p>
+                            </div>
+                        </div>
+                        <div class=" tool-row-flex-setngs frth-row">
+                            <div class="tools-bubble1 bubble">
+                                <img class="tool-bubble-img-1" src="~/img/Tool/@ViewBag.Tools[6].Image" />
+                                <p class="d-none">@ViewBag.Tools[6].Name</p>
+                            </div>
+                            <div class="tools-bubble3 bubble">
+                                <img class="tool-bubble-img-3" src="~/img/Tool/@ViewBag.Tools[7].Image" />
+                                <p class="d-none">@ViewBag.Tools[7].Name</p>
+                            </div>
+                            <div class="tools-bubble2 bubble">
+                                <img class="tool-bubble-img-2" src="~/img/Tool/@ViewBag.Tools[8].Image" />
+                                <p class="d-none">@ViewBag.Tools[8].Name</p>
+                            </div>
+                        </div>
+                        <div class="tool-row-flex-setngs fiveth-row">
+                            <div class="tools-bubble2 bubble">
+                                <img class="tool-bubble-img-2" src="~/img/Tool/@ViewBag.Tools[9].Image" />
+                                <p class="d-none">@ViewBag.Tools[9].Name</p>
+                            </div>
+                            <div class="tools-bubble1 bubble">
+                                <img class="tool-bubble-img-1" src="~/img/Tool/@ViewBag.Tools[0].Image" />
+                                <p class="d-none">@ViewBag.Tools[0].Name</p>
+                            </div>
+                        </div>
+                   
+                     
+
+                    
+                    </div>
+            </div>
+        </div>
+    }
+}

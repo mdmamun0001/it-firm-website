@@ -1,0 +1,77 @@
+﻿@model JobApplicationCreateViewModel
+@{
+    ViewData["title"] = "Apply";
+}
+<section class="banner-section"></section>
+<section class="section-margin">
+     <div class="container">
+        <div class="row justify-content-center">
+            @{
+                if (TempData["FlashMessage"] != null)
+                {
+                            <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                }
+            }
+            <div class="col-lg-10 col-md-10 col-11  rounded get-appoinment-section" style="">
+
+                <h4 class="sub-title" style="text-align:center;">Let's grow your bright future with our experts.    </h4>
+                <a class="btn common-button" href="#our-employes">Meet our Experts</a>
+                    
+                </div>
+         
+           
+            <div class="col-10 marginTB50">
+                 <h2 class="text-center title">Apply</h2>
+                <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="JobApplication">
+                    <div class="form-group">
+                        <label> </label>
+                        <input placeholder="Name*" required asp-for="Name" class="form-control contact-input" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input placeholder="Email*" type="Email" asp-for="Email" class="form-control contact-input" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input type="number" placeholder="Contact Number" asp-for="PhoneNumber" class="form-control contact-input" />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input  placeholder="Job Title*" asp-for="JobTitle" class="form-control contact-input" />
+                        <span asp-validation-for="JobTitle"></span>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:5px;">CV <span style="color:red;">*</span></label>
+                        <input  placeholder="Job Title*" asp-for="Cv" class="form-control contact-input" />
+                        <span asp-validation-for="Cv"></span>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:5px;" asp-for="CoverLetter"></label>
+                        <input  placeholder="Cover Letter(optional)" asp-for="CoverLetter" class="form-control contact-input" />
+                        <span asp-validation-for="CoverLetter"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <textarea placeholder="Write your message" asp-for="Message" rows="10"  class="form-control"> </textarea>
+                        <span asp-validation-for="Message"></span>
+                    </div>
+                    <button class="btn button-color common-button" style="margin-top:20px; float:right" type="submit">Submit</button>
+                </form>
+                
+            </div>
+         </div>
+     </div>
+</section>
+<partial name="~/Views/Component/Employe.cshtml"></partial>
+<partial name="~/Views/Component/Client.cshtml"></partial>
+<partial name="~/Views/Component/CustomerReview.cshtml"></partial>
+@section scripts
+    {
+  
+    @{
+                    <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

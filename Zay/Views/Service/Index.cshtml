@@ -1,0 +1,103 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-md-12">
+
+        @{
+            ViewData["Title"] = "Service List";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["FlashMessage"] != null)
+            {
+                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table table-light  table-striped">
+            <thead>
+                <tr>
+                        <th scope="col" >
+                        Name
+                    </th>
+                        <th scope ="col">
+                        Short Description
+                    </th >
+                        <th scope="col">
+                            Description
+                    </th>
+                 
+                    <th scope="col">
+                        Category
+                    </th>
+                    <th scope="col" >
+                        Activity
+                    </th >
+                        <th scope="col">
+                        Display Order
+                    </th>
+                        <th scope="col">
+                        Image
+                    </th>
+                        <th scope="col" >
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                    @foreach (var item in ViewBag.Services)
+                {
+                    <tr>
+                        <td >
+                            @item.Name
+
+                        </td>
+                        <td>
+                            @item.ShortDescription
+
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+  
+                        <td>
+                            @{
+                               if(item.ServiceCategories != null) {
+                                        foreach (var Category in item.ServiceCategories)
+                                    {
+                                            <span class="badge bg-info text-dark">@Category.Name</span>
+                                            
+                                    }
+                               }
+                            }
+                        </td>
+                        <td>
+
+                            @(item.IsActive  ? "Active" : "InActive")
+
+                        </td>
+                        <td>
+                            @item.DisplayOrder
+                        </td>
+                        <td>
+                            <img height="50" width="50" src="~/img/Service/@item.Image" />
+                        </td>
+                        <td class="text-center">
+                                <a class="btn btn-info" asp-controller="Service" asp-action="Edit" asp-route-id="@item.ServiceId">Edit</a>
+                                <button class=" float-right btn btn-danger" onclick="DeleteItem('/Admin/Service/Delete/@item.ServiceId')">Delete</button>
+
+                        </td>
+                       
+                    </tr>
+                }
+
+
+            </tbody>
+            </table>
+            <form class="d-none" method="get" id="form-delete-item-action">
+                <button type="submit" class="btn" id="Delete-confirm-item"> </button>
+            </form>
+        </div>
+       <a class="float-right btn btn-info" asp-controller="Service" asp-action="Create"> Create New One</a>  
+    </div>
+</div>

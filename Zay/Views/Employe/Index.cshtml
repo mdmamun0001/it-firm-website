@@ -1,0 +1,88 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-md-12">
+
+        @{
+            ViewData["Title"] = "Slider List";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["FlashMessage"] != null)
+            {
+                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col">
+                            JobTItle
+                        </th>
+                        <th scope="col">
+                            Responsibility
+                        </th>
+                        <th scope="col" class="text-center">
+                            status
+                        </th>
+                        <th scope="col" class="text-center">
+                            Display Order
+                        </th>
+                        <th scope="col" class="text-center">
+                            Image
+                        </th>
+                        <th scope="col" class="text-center">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.Employes)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+
+                            </td>
+                            <td>
+                                @item.JobTitle
+
+                            </td>
+                            <td>
+                                @(item.Responsibility ?? "")
+
+                            </td>
+                            <td class="text-center">
+
+                                @(item.IsActive ? "Active" : "InActive")
+
+                            </td>
+                            <td class="text-center">
+                                @item.DisplayOrder
+                            </td>
+                            <td class="text-center">
+                                <img height="50" width="50" src="~/img/Employe/@item.Image" />
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-info" asp-controller="Employe" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <button class=" float-right btn btn-danger" onclick="DeleteItem('/Admin/Employe/Delete/@item.Id')">Delete</button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <form class="d-none" method="get" id="form-delete-item-action">
+                <button type="submit" class="btn" id="Delete-confirm-item"> </button>
+            </form>
+        </div>
+       <a class="float-right btn btn-info" asp-controller="Employe" asp-action="Create"> Create New One</a>  
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model CustomerMessageCreateViewModel
+
+@{
+    ViewData["Title"] = "Send Message";
+}
+<section class="section-margin">
+     <div class="container">
+        <div class="row justify-content-center">
+            @{
+                if (TempData["FlashMessage"] != null)
+                {
+                    <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                }
+            }
+            <div class="col-lg-10 col-md-10 col-11  rounded get-appoinment-section" style="">
+                
+                    <h4 class="sub-title" style="text-align:center;">Our experts are ready to take challange for you !</h4>
+                    <a class="btn common-button" asp-controller="Home" asp-action="Appoinment">Get Appoinment</a>
+            </div>
+         
+           
+            <div class="col-10 marginTB50">
+                 <h2 class="text-center title">Send your valuable Message </h2>
+                <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Message">
+                    <div class="form-group">
+                        <label> </label>
+                        <input placeholder="Name*" required asp-for="Name" class="form-control contact-input" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input placeholder="Email*" type="Email" asp-for="Email" class="form-control contact-input" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input type="number" placeholder="Contact Number" asp-for="PhoneNumber" class="form-control contact-input" />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <textarea placeholder="Write your message" asp-for="Message" rows="10" required class="form-control"> </textarea>
+                        <span asp-validation-for="Message"></span>
+                    </div>
+                    <button class="btn button-color common-button" style="margin-top:20px; float:right" type="submit">Send your message</button>
+                </form>
+                
+            </div>
+         </div>
+     </div>
+</section>
+<partial name="~/Views/Component/Client.cshtml"></partial>
+<partial name="~/Views/Component/CustomerReview.cshtml"></partial>
+@section scripts
+    {
+  
+    @{
+            <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

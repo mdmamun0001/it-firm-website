@@ -1,0 +1,35 @@
+﻿@{
+    if (ViewBag.Reviews != null && ViewBag.Reviews.Count > 0)
+    {
+    <div class="container section-margin" style=" ">
+                                <div class="row" >
+                                    <div class="text-center" style="margin:0px 0px 80px 0px;">
+                                        <h2 class="title"> See What Our Customers Are Saying</h2>
+                                    </div>
+                                    <div class="col-12" style="min-height:100px">
+                                        <div id="Customer-review-slick-slider">
+                                            @{
+                            foreach (var item in ViewBag.Reviews)
+                            {
+                                                                        <div style="padding:10px;">
+                                                                            <div class="  d-flex" style="flex-direction:row; column-gap:20px;">
+                                                                                <img class="" style="height:60px; width:60px; border-radius:50%; margin-left:5px;" src="~/img/Reviewer/@item.Image" />
+                                                                                <div class="d-flex" style="flex-direction:column;">
+                                                                                    <h5 class="sub-title">@item.Name</h5>
+                                                                                    <p>@item.Description</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="">
+                                                                                <p class="customer-review-message">@item.Message</p>
+                                                                            </div>
+                                                                        </div>
+                            }
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                </div>
+    </div>
+    }
+}

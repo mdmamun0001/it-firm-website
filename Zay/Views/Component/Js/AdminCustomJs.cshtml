@@ -1,0 +1,102 @@
+﻿<script>
+    $(document).ready(function () {
+            
+                    let allCustomermessages = [];
+                    let allAppoinmentRequest = [];
+                    let allJobApplication = [];
+                    axios.get('/AdminGetAllCustomerMessages', {
+
+                    }).then(function (response) {
+                        allCustomermessages = response.data;
+                        $('#new-message-count').text(allCustomermessages.length);
+                        $('#new-message-count-left').text(allCustomermessages.length);
+                        for (let item of allCustomermessages) 
+                        { 
+                            $('#CustomerMessageNotification').append(
+                                `<a class="dropdown-item d-flex align-items-center" href="/Admin/CustomerMessage/View/${item.id}" ">
+                                     <div class="dropdown-list-image mr-3">
+
+                                           <i class="fas fa-envelope-open-text"></i>
+                                          </div>
+                                          <div class="font-weight-bold">
+                                                  <div class="text-truncate">
+                                                              ${item.name}
+                                                   </div>
+                                          <div class="small text-gray-500">sent at  ${item.createdDateTime} </div>
+                                      </div>
+                                   </a> `);
+                        }
+
+                      $('#CustomerMessageNotification').append(`<a class="dropdown-item text-center small text-gray-500" href="/Admin/CustomerMessage/" > Read All Messages </a>`);
+
+                    }).catch(error => {
+                        console.log(error);
+                    });
+
+                axios.get('/GetUnSeenAppoinmentRequest', {
+
+                }).then(function (response) {
+                    allAppoinmentRequest = response.data;
+                    $('#new-appoinment-request-count').text(allAppoinmentRequest.length);
+                    $('#new-appoinment-request-count-left').text(allAppoinmentRequest.length);
+                    for (let item of allAppoinmentRequest) {
+                        $('#appoinment-request-notifiction').append(
+                            `<a class="dropdown-item d-flex align-items-center" href="/Admin/AppoinmentRequest/View/${item.id}">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                                       <i class="fas fa-calendar-check"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                       ${item.name}
+                                       
+                                          <div class="small text-gray-500">sent at  ${item.createdDateTime} </div>
+                                    </div>
+                                </a>`);
+                    }
+
+                    $('#appoinment-request-notifiction').append(`<a class="dropdown-item text-center small text-gray-500" href="/Admin/AppoinmentRequest">All Appoinment Request</a>`);
+
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                 axios.get('/GetUnSeenJobApplication', {
+
+                }).then(function (response) {
+                    allJobApplication = response.data;
+                    $('#new-job-apply-count-left').text(allJobApplication.length);
+
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                
+            });
+    
+           //delete item sweet alart
+            function DeleteItem(DeleteUrl) {
+                console.log( DeleteUrl)
+               if(DeleteUrl) {
+                   swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this item!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+
+                            $("#form-delete-item-action").attr("action", DeleteUrl);
+
+                            $('#Delete-confirm-item').click();
+                            
+                        } else {
+                            swal("Your item is safe!");
+                        }
+                    });
+                }
+            }
+    
+</script>

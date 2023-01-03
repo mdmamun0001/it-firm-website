@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Project";
+}
+@{
+    if(ViewBag.Project != null){
+    <section style="margin-top:100px;">
+                                      <div class="container">
+                                        <div class="row">
+                                          <div class="col-12">
+                                            <div class="d-flex" style="margin:50px 0px; flex-direction:column; row-gap:30px;">
+                            <h2><a class="title" href="@ViewBag.Project.ProjectUrl">@ViewBag.Project.Name</a></h2>
+                                             <img class="rounded-3 img-fluid" src="~/img/Project/@ViewBag.Project.Image"/>
+                                             <p>@ViewBag.Project.Description</p>
+                                            </div>
+                                          </div>
+                                          <hr>
+                                          <div class="d-flex" style="justify-content:space-between">
+                                            <p class="sub-title">Category: @ViewBag.Project.CategoryName</p>
+                                            <p class="sub-title">Client: <a class="sub-sub-title" href="@ViewBag.Project.ClientUrl">@ViewBag.Project.ClientName</a> </p>
+                                          </div>
+                                          <div class="d-flex" style=" flex-direction:column; row-gap:20px;">
+                                            <p class="sub-title">Tools</p>
+                                            <div style="width:80%;">
+                                              @foreach(var item in ViewBag.Project.Tools){
+                                                  <img class="rounded-3" width="60px" src="~/img/Tool/@item.Image" />
+                                  }
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+    </section>
+
+            <partial name="~/Views/Component/CustomerReview.cshtml"></partial>
+            <partial name="~/Views/Component/Employe.cshtml"></partial>
+            <partial name="~/Views/Component/FindSolution.cshtml"></partial>
+    }
+}

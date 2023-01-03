@@ -1,0 +1,75 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-md-12">
+
+        @{
+            ViewData["Title"] = "Tool List";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["FlashMessage"] != null)
+            {
+                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col" class="text-center">
+                            status
+                        </th>
+                        <th scope="col" class="text-center">
+                            Display Order
+                        </th>
+                        <th scope="col" class="text-center">
+                            Image
+                        </th>
+                        <th scope="col" class="text-center">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.Tools)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+
+                            </td>
+
+                            <td class="text-center">
+
+                                @(item.IsActive ? "Active" : "InActive")
+
+                            </td>
+                            <td class="text-center">
+                                @item.DisplayOrder
+                            </td>
+                            <td class="text-center">
+                                <img height="150" width="150" src="~/img/Tool/@item.Image" />
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-info" asp-controller="Tool" asp-action="Edit" asp-route-id="@item.ToolId">Edit</a>
+                                <button class=" float-right btn btn-danger" onclick="DeleteItem('/Admin/Tool/Delete/@item.ToolId')">Delete</button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+                <form class="d-none" method="get" id="form-delete-item-action">
+                    <button type="submit" class="btn" id="Delete-confirm-item"> </button>
+                </form>
+            </table>
+        </div>
+       <a class="float-right btn btn-info" asp-controller="Tool" asp-action="Create"> Create New One</a>  
+    </div>
+</div>

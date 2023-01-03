@@ -1,0 +1,56 @@
+﻿@{
+    if (ViewBag.CompanyInfo != null && ViewBag.CompanyInfo.Count > 0)
+    {
+
+        <section class="section-margin">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 vission-mission-strength">
+                        <h2 class="title" style="margin-bottom:50px;">Best It Solution We Provide</h2>
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: -14px;">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active sub-title" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Our Vision</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sub-title" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Our Mission</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link sub-title " id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Our Strength</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">@ViewBag.CompanyInfo[0].Vission</div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">@ViewBag.CompanyInfo[0].Vission</div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">@ViewBag.CompanyInfo[0].Vission</div>
+                        </div>
+                        <div class="d-flex know-about">
+                            <a class="btn common-button" style="margin-top:30px;" asp-controller="Home" asp-action="About"> Know About Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-none d-md-block">
+                        @{
+
+                            if (ViewBag.PhotoGallary != null && ViewBag.PhotoGallary.Count >= 4)
+                            {
+                                int PhotoShow = 0;
+                                <div class="d-flex" style="width:100%; row-gap:15px; column-gap:15px; justify-content:center; align-items:center; flex-wrap:wrap; border:2px solid #ff6600; padding:10px;">
+                                    @foreach (var item in ViewBag.PhotoGallary)
+                                    {
+                                        PhotoShow += 1;
+                                        if (PhotoShow > 4)
+                                        {
+                                            break;
+                                        }
+                                        <img class="box-shadow v-m-s-image" style="width:48%; height:200px;" src="~/img/Gallary/@item.Image" />
+                                    }
+                                </div>
+
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}

@@ -1,0 +1,94 @@
+﻿@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
+@using X.PagedList;
+<div class=" row justify-content-center">
+    <div class="col-md-12">
+
+        @{
+            ViewData["Title"] = "JobApplications ";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["FlashMessage"] != null)
+            {
+                    <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Job Title
+                        </th>
+                        <th scope="col">
+                            Name
+                        </th>
+                        <th scope="col">
+                            Email
+                        </th>
+                        <th scope="col">
+                            Contact Number
+                        </th>
+                        <th scope="col" class="text-center">
+                            status
+                        </th>
+                        <th scope="col" class="text-center">
+                            Sent Time
+                        </th>
+
+                        <th scope="col" class="text-center">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.JobApplications)
+                    {
+                        <tr>
+                            <td>
+                                @item.JobTitle
+
+                            </td>
+                            <td>
+                                @item.Name
+
+                            </td>
+                            <td>
+                                @item.Email
+
+                            </td>
+                            <td>
+                                @item.PhoneNumber
+
+                            </td>
+                            <td class="text-center">
+
+                                @(item.IsSeen ? "Seen" : "Not Seen")
+
+                            </td>
+                            <td class="text-center">
+                                @item.CreatedDateTime.ToString("ddd dd MMM yyy HH:mm:ss")
+                            </td>
+                            <td class="text-center">
+                                <a class=" btn btn-info" asp-controller="JobApplication" asp-action="View" asp-route-id="@item.Id">View</a>
+                                <button class=" btn btn-danger" style="margin:2px;" onclick="DeleteItem('/Admin/JobApplication/Delete/@item.Id')">Delete</button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <form class="d-none" method="get" id="form-delete-item-action">
+                <button type="submit" class="btn" id="Delete-confirm-item"> </button>
+            </form>
+        </div>
+
+        <!-- paging control for navigation to the previous page, next page, etc -->
+        @Html.PagedListPager( (IPagedList)ViewBag.JobApplications, page => Url.Action("Index", new { page }) )
+    </div>
+</div>

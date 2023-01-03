@@ -1,0 +1,63 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-md-12">
+
+        @{
+            ViewData["Title"] = "Mail Address to Mailing";
+        }
+
+
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (TempData["FlashMessage"] != null)
+            {
+                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Mail Address
+                        </th>
+                        <th scope="col" class="text-center">
+                            Status
+                        </th>
+                        <th scope="col" class="text-center">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.MailAddress)
+                    {
+                        <tr>
+                            <td>
+                                @item.Email
+
+                            </td>
+                            <td class="text-center">
+
+                                @(item.IsActive ? "Active" : "InActive")
+
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-info" asp-controller="MailAddress" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <button class=" float-right btn btn-danger" onclick="DeleteItem('/Admin/MailAddress/Delete/@item.Id')">Delete</button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <form class="d-none" method="get" id="form-delete-item-action">
+                <button type="submit" class="btn" id="Delete-confirm-item"> </button>
+            </form>
+        </div>
+       <a class="float-right btn btn-info" asp-controller="MailAddress" asp-action="Create"> Create New One</a>  
+    </div>
+</div>

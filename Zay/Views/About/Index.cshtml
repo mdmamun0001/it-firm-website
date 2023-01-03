@@ -1,0 +1,145 @@
+﻿<div class=" row justify-content-center">
+    <div class="col-12">
+
+        @{
+            ViewData["Title"] = "About";
+        }
+        <div class ="">
+            <h1>@ViewData["Title"]</h1> 
+            @{
+                if (TempData["FlashMessage"] != null)
+                {
+                    <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                }
+            }
+            <div class="table-responsive">
+                <table class="table  table-striped">
+                <thead>
+                    <tr>
+                        <th scope="colgroup">
+                            Name
+                        </th>
+                        <th style="width:20%">
+                            Short Description
+                        </th>
+                        <th scope="col">
+                            Description
+                        </th>
+                        <th scope="col">
+                            Vission
+                        </th>
+                        <th scope="col">
+                            Mission
+                        </th>
+                        <th scope="col">
+                            Strength
+                        </th>
+                        <th scope="col">
+                            PhoneNnmber
+                        </th>
+                        <th scope="col">
+                            PhoneNnmber
+                        </th>
+                        <th scope="col">
+                            Email
+                        </th>
+                        <th scope="col">
+                            Email
+                        </th>
+                        <th scope="col">
+                            Address
+                        </th>
+                        <th scope="col">
+                            Address Link
+                        </th>
+
+                        <th scope="col">
+                            OfficeTime
+                        </th>
+                        <th scope="col">
+                            Off Day
+                        </th>
+                        <th scope="col">
+                            Logo
+                        </th>
+                        <th scope="col">
+                            Image
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.About)
+                    {
+                        <tr>
+                            <td>
+                                @item.CompanyName
+
+                            </td>
+                            <td>
+                                @item.ShortDescription
+
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                @item.Vission
+                            </td>
+                            <td>
+                                @item.Mission
+                            </td>
+                            <td>
+                                @item.Strength
+                            </td>
+                            <td>
+                                @item.PhoneNnmber
+                            </td>
+                            <td>
+                                @item.PhoneNumber2
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.Email2
+                            </td>
+                            <td>
+                                @item.Address
+                            </td>
+                            <td>
+                                @item.AddressLink
+                            </td>
+                            <td>
+                                @item.OfficeTime
+                            </td>
+                            <td>
+                                @item.OffDay
+                            </td>
+                            <td>
+                                <img height="50" width="50" src="~/img/Gallary/@item.Logo" />
+                            </td>
+                            <td>
+                                <img height="50" width="50" src="~/img/Gallary/@item.Image" />
+                            </td>
+                            <td class="text-center">
+                                    <a class="btn btn-info" asp-controller="About" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <button class=" float-right btn btn-danger" onclick="DeleteItem('/Admin/About/Delete/@item.Id')">Delete</button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+                </table>
+                <form class="d-none" method="get" id="form-delete-item-action">
+                    <button type="submit" class="btn" id="Delete-confirm-item"> dd</button>
+                </form>
+            </div>
+
+        </div>
+       <a class="float-right btn btn-info" style="margin-top:50px" asp-controller="About" asp-action="Create"> Create New One</a>  
+    </div>
+</div>

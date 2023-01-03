@@ -1,0 +1,31 @@
+﻿@{
+    if (ViewBag.Clients != null && ViewBag.Clients.Count > 0)
+    {
+    <div class="container section-margin" >
+                            <div class="row">
+                                  <div class="col-md-4 client-brand-title" style="" >
+                                                              
+                                       <h2 class="title">
+                                               Clients we have collaborated with
+                                         </h2>
+                                                                
+                                   </div>
+                                   <div class="col-md-8 " style="margin-top:50px;">
+                                               <div id="client-brands-slick"> 
+                                                   
+                                                    @foreach (var item in ViewBag.Clients)
+                                                {
+                                                                <div style="display: flex; justify-content: center; align-items: center;">
+                                                                    <img class="brand-image" src="~/img/Client/@item.Image" />
+                                                                </div>
+                                                }
+                                                   
+
+                                                      
+                                                 </div>
+                                      </div>
+                             </div>
+                                                          
+    </div>
+    }
+}

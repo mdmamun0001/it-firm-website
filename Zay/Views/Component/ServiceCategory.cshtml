@@ -1,0 +1,76 @@
+﻿@{
+    if (ViewBag.ServiceCategories != null && ViewBag.ServiceCategories.Count > 0)
+    {
+        <section id="service-prividing-section" class="container-fluid paddingTB100" style="background-color:aliceblue">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:40px">
+                    <h2 class="title">Services What we provde</h2>
+                </div>
+
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-11">
+                        <ul class="Service-category-tab nav nav-pills mb-3 d-flex" style="justify-content:center" id="pills-tab" role="tablist">
+                            @{
+                                int count = 0;
+                                foreach (var item in ViewBag.ServiceCategories)
+                                {
+                                    count += 1;
+                                    <li class="nav-item sub-sub-title" role="presentation">
+                                        <button class="nav-link  @(count == 1 ? "active" : "")"
+                                        id="ex1_tab_@item.Id"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#ex1_tabs_@item.Id"
+                                        role="tab"
+                                        type="button"
+                                        aria-controls="ex1_tabs_@item.Id"
+                                        aria-selected="@(count == 1 ? true : false)">
+                                            @item.Name
+                                        </button>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-top:10px;">
+                    <div class=" col-md-11">
+                        <div class="tab-content" id="pills-tabContent">
+                            @{
+                                int count2 = 0;
+                                foreach (var item in ViewBag.ServiceCategories)
+                                {
+                                    count2 += 1;
+                                    <div class="tab-pane fade  @(count2 == 1 ? "show active" : "")"
+                                 id="ex1_tabs_@item.Id"
+                                 role="tabpanel"
+                                 aria-labelledby="ex1_tab_@item.Id">
+                                        <div class="row">
+                                            <div class="col-md-6 d-flex" style="flex-direction:column; row-gap:40px; justify-content:center; ">
+                                                <H3 class="sub-sub-title">
+                                                    @item.Name
+                                                </H3>
+                                                <p>
+                                                    @item.Description
+                                                </p>
+                                                <a style="margin:20px 0px; width:40%;" class="text-center btn common-button" asp-controller="Home" asp-action="Services" asp-route-id="@item.Id">Read More</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class=" service-category-tab-image">
+                                                    <img class="img-fluid" src="~/img/Service/@item.Images" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+     </section>
+    }
+}

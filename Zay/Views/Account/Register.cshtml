@@ -1,0 +1,71 @@
+﻿@model UserCreateViewModel
+@{
+    ViewData["Title"] = "Create A New user";
+}
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        @{
+                            if (TempData["FlashMessage"] != null)
+                            {
+                                <partial name="~/Views/Component/FlashMessage.cshtml"></partial>
+                            }
+                        }
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <form class="user" method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="Register">
+                            <div class="form-group ">
+                                <label asp-for="Name"></label>
+                                <input type="text" class="form-control form-control-user" asp-for="Name"  id="exampleFirstName"
+                                           placeholder="Name">
+
+                                <span asp-validation-for="Name"></span>
+                               
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UserEmail"></label>
+                                <input type="email" class="form-control form-control-user" asp-for="UserEmail" id="exampleInputEmail"
+                                       placeholder="Email Address">
+                                <span asp-validation-for="UserEmail"></span>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label asp-for="Password"></label>
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleInputPassword" asp-for="Password" >
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label asp-for="ConfirmPassword"></label>
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleRepeatPassword" asp-for="ConfirmPassword" placeholder="">
+                                    <span asp-validation-for="ConfirmPassword"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

@@ -1,0 +1,91 @@
+﻿@model ServiceEditViewModel
+@{
+    ViewData["Title"] = "Edit Service";
+}
+
+<h1 class="text-align-center">@ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
+<form method="post" enctype="multipart/form-data" asp-controller="Service" asp-action="Edit">
+    <input hidden asp-for="@Model.ServiceId" />
+    <input hidden asp-for="@Model.ExistingImage" />
+    <select multiple hidden asp-for="@Model.ExistingServiceCategoriesIds" > 
+       @{
+            if (@Model.ExistingServiceCategoriesIds != null)
+            {
+                foreach (var item in @Model.ExistingServiceCategoriesIds)
+                {
+                    <option value="@item"></option>
+                }
+           }
+       }       
+    </select> 
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+  
+    <div class="form-group">
+        <label asp-for="ShortDescription"></label>
+        <input class="form-control" asp-for="@Model.ShortDescription" />
+        <span asp-validation-for="ShortDescription"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="@Model.Description"> </textarea>
+        <span asp-validation-for="Description"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="IsActive">Is Shown or Not</label>
+        <select class="form-control" asp-for="@Model.IsActive">
+            <option value="">Select Status</option>
+            <option value="true">Active</option>
+            <option value="false">InActive</option>
+            <span asp-validation-for="IsActive"></span>
+        </select>
+   </div>
+    <div class="form-group">
+
+        <label asp-for="DisplayOrder"></label>
+        <input class="form-control" asp-for="@Model.DisplayOrder" />
+        <span asp-validation-for="DisplayOrder"></span> 
+   </div>
+    <div class="form-group">
+
+        <label asp-for="NewServiceCategoriesIds">Category</label>
+        <select multiple class="form-control js-example-basic-multiple" asp-for="@Model.NewServiceCategoriesIds">
+           @{
+                if (ViewData["ServiceCategories"] != null)
+                {
+                    foreach (ServiceCategory item in ViewData["ServiceCategories"] as List<ServiceCategory>)
+                    {
+                            <option value="@item.Id">@item.Name</option>
+                    }
+               }
+            }
+         
+            <span asp-validation-for="NewServiceCategoriesIds"></span>
+       </select>
+    </div>
+    <div class="form-group">
+
+        <label asp-for="Image"></label>
+        <input class="form-control" asp-for="@Model.Image"  />
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button class="btn btn-info float-right" type="submit">Update</button>
+</form>
+  @section scripts{
+        @{
+        <script src="~/js/select2.min.js"></script>
+                <partial name="_ValidationScriptsPartial"></partial>
+                <script>
+                $(document).ready(function () {
+                    $('.js-example-basic-multiple').select2();
+                });
+                </script>
+        }
+    }
